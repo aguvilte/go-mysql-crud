@@ -3,9 +3,10 @@ package post
 import (
 	"context"
 	"database/sql"
+	"fmt"
 
-	models "github.com/s1s1ty/go-mysql-crud/models"
-	pRepo "github.com/s1s1ty/go-mysql-crud/repository"
+	models "github.com/unlar/go-mysql-crud/models"
+	pRepo "github.com/unlar/go-mysql-crud/repository"
 )
 
 // NewSQLPostRepo retunrs implement of post repository interface
@@ -72,6 +73,8 @@ func (m *mysqlPostRepo) Create(ctx context.Context, p *models.Post) (int64, erro
 
 	stmt, err := m.Conn.PrepareContext(ctx, query)
 	if err != nil {
+
+		fmt.Println(err)
 		return -1, err
 	}
 

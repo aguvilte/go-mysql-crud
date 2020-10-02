@@ -7,10 +7,10 @@ import (
 	"strconv"
 
 	"github.com/go-chi/chi"
-	"github.com/s1s1ty/go-mysql-crud/driver"
-	models "github.com/s1s1ty/go-mysql-crud/models"
-	repository "github.com/s1s1ty/go-mysql-crud/repository"
-	post "github.com/s1s1ty/go-mysql-crud/repository/post"
+	"github.com/unlar/go-mysql-crud/driver"
+	models "github.com/unlar/go-mysql-crud/models"
+	repository "github.com/unlar/go-mysql-crud/repository"
+	post "github.com/unlar/go-mysql-crud/repository/post"
 )
 
 // NewPostHandler ...
@@ -40,7 +40,7 @@ func (p *Post) Create(w http.ResponseWriter, r *http.Request) {
 	newID, err := p.repo.Create(r.Context(), &post)
 	fmt.Println(newID)
 	if err != nil {
-		respondWithError(w, http.StatusInternalServerError, "Server Error")
+		respondWithError(w, http.StatusInternalServerError, "Error server")
 	}
 
 	respondwithJSON(w, http.StatusCreated, map[string]string{"message": "Successfully Created"})
